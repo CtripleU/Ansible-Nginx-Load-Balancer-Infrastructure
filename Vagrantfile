@@ -19,17 +19,6 @@ Vagrant.configure("2") do |config|
         ansible.inventory_path = "vagrant-hosts"
       end
 
-  #   nodejsapp_nginx.vm.provision "shell", inline: <<-SHELL
-  #     echo "Adding SSH Key"
-  #     echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
-  #   SHELL
-  # end
-
-  # config.vm.define "nodejsapp_backend_1" do |nodejsapp_backend_1|
-  #   nodejsapp_backend_1.vm.provider "virtualbox" do |vb|
-  #      vb.memory = "512"
-  #   end
-  # Configure app servers
     config.vm.define "server-1" do |server_1|
       server_1.vm.provider "virtualbox" do |vb|
         vb.memory = "512"
@@ -46,11 +35,6 @@ Vagrant.configure("2") do |config|
         ansible.inventory_path = "vagrant-hosts"
       end
 
-  #   nodejsapp_backend_1.vm.provision "shell", inline: <<-SHELL
-  #     echo "Adding SSH Key"
-  #     echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
-  #   SHELL
-  # end
 
     config.vm.define "server-2" do |server_2|
       server_2.vm.provider "virtualbox" do |vb|
@@ -68,11 +52,6 @@ Vagrant.configure("2") do |config|
         ansible.inventory_path = "vagrant-hosts"
       end
 
-  #   nodejsapp_backend_2.vm.provision "shell", inline: <<-SHELL
-  #     echo "Adding SSH Key"
-  #     echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
-  #   SHELL
-  # end
 
     config.vm.provision "shell", inline: <<-SHELL   
       apt-get update
