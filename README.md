@@ -27,15 +27,13 @@ Test if the Load balancer is working by running
 `Python3 lbtest.py -url http://192.168.33.10 -requests 100`
 
 
-
-
 *Note*: The VMs were provisioned to ensure that all users in the admin group can sudo without a password.
 
 
 Possible Improvements
 -----
 * Since I have to create two web servers running `ubuntu/bionic64`, I can refactor the Vagrantfile to use a single configuration block to create them instead of repeating the same thing twice. 
-* I did not consider security as this is for a test nvironment. So there are no firewalls or backup scripts for the box. It would be recommended to secure the system if this were to be moved from a test environment to production.
+* I did not consider security as this is for a test environment. So there are no firewalls or backup scripts for the box. It would be recommended to secure the system if this were to be moved from a test environment to production.
 
 #### Completion time  
 It took about six hours for me to complete this task.
