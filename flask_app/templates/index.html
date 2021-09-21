@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div>
+        {% for datas in data %}
+            <span>{{ datas['anime'] }}</span>
+        {% endfor %}
+        <p>{{ data['quote']}}</p>
+        <p>{{ data['character']}}</p>
+    </div>
+{% endblock content %}

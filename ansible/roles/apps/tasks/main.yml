@@ -1,0 +1,81 @@
+---    
+- name: Install virtualenv (latest from pip)
+  pip: 
+    executable: pip3 
+    name: virtualenv
+
+- name: Create the virtualenv
+  command: virtualenv {{ virtualenv_path }} 
+    creates: {{ virtualenv_path }}/bin/activate
+
+- name: Install packages from requirements.txt inside virtualenv
+  pip: 
+    virtualenv: {{ virtualenv_path }} 
+    requirements: {{ requirements_file }}
+
+- name: Activate virtualenv on login
+  lineinfile: 
+    dest: ~/.bashrc 
+    line: '. {{ virtualenv_path }}/bin/activate'
+
+  # - name: Install Flask
+  #   apt:
+  #     name: python3-flask
+  #     state: present 
+
+  # - name: Install requests
+  #   apt: 
+  #     name: python3-requests
+  #     state: present
+  
+- name: Write python web server file
+  template: 
+    src: flask_app/hello-world.py 
+    dest: /opt/hello-world.py
+
+- name: Ansible create service for app
+    become: yes
+    copy:
+      dest: "/etc/systemd/system/app.service"
+      mode: 0664 
+      owner: vagrant 
+      content: | 
+        [Unit]
+        Description=my Flask app
+        [Service]
+        ExecStart=/usr/bin/python3 /opt/hello-world.py
+        [Install]
+        WantedBy=multi-user.target
+    
+  - name: Start app
+    become: yes
+    systemd:   
+      state: started 
+      daemon_reload: yes 
+      name: app.service
+      enabled: yes 
+
+- name: Write nginx.conf
+  template: src=nginx.conf dest=/etc/nginx/nginx.conf
+  notify: 
+    - Restart Nginx
+
+- name: Write the default sites-available file
+  template: 
+    src: default-site 
+    dest: /etc/nginx/sites-available/default
+  notify: 
+  - Restart Nginx
+
+- name: Ensure the default html file in the nginx directory is removed
+  file: 
+    path: /usr/share/nginx/html/* 
+    state: absent
+
+- name: Deploy our index.html file to replace the deleted one
+  template: 
+    src: flak_app/templates/index.html 
+    dest: /usr/share/nginx/html/index.html
+
+
+
