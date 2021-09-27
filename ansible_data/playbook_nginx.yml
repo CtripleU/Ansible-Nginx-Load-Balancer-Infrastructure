@@ -1,26 +1,30 @@
 ---
 - hosts: all
   tasks:
-    - name: ensure nginx is at the latest version
+    - name: Ensure nginx is at the latest version
       apt: name=nginx state=latest
       become: yes
-    - name: start nginx
+    
+    - name: Start nginx
       service:
           name: nginx
           state: started
       become: yes
-    - name: copy the nginx config file and restart nginx
+    
+    - name: Copy the nginx config file and restart nginx
       copy:
         src: ./nginx.cfg
         dest: /etc/nginx/sites-available/nginx.cfg
       become: yes
-    - name: create symlink
+    
+    - name: Create symlink
       file:
         src: /etc/nginx/sites-available/nginx.cfg
         dest: /etc/nginx/sites-enabled/default
         state: link
       become: yes
-    - name: restart nginx
+    
+    - name: Restart nginx
       service:
         name: nginx
         state: restarted

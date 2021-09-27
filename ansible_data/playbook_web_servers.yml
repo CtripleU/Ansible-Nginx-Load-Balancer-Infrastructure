@@ -4,12 +4,15 @@
   - name: Install pip
     apt: name=python3-pip state=present
     become: yes    
+  
   - name: Install Flask
     command: pip3 install -U Flask
     become: yes 
+  
   - name: Install requests
     apt: name=python3-requests state=present
     become: yes    
+  
   - name: Ansible create app
     become: yes
     copy:
@@ -26,7 +29,7 @@
         def index():
             req = requests.get('https://animechan.vercel.app/api/random')
             
-            return (req.content)
+            return "Hello from IP" 
 
         if __name__ == '__main__':
                     app.run(debug = True, host='0.0.0.0', port='5000')
