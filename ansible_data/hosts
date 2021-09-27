@@ -1,0 +1,28 @@
+server-1 ansible_host=192.168.33.12  
+server-2 ansible_host=192.168.33.13  
+
+load-balancer ansible_host=192.168.33.11 
+
+[webservers]
+server-1
+server-2
+
+[loadbalancer]
+load-balancer
+
+[webservers:vars]
+ansible_user=vagrant 
+ansible_sss_pass=vagrant
+
+[loadbalancer:vars]
+ansible_user=vagrant 
+ansible_sss_pass=vagrant
+
+[all:children]
+webservers
+loadbalancer
+
+[all:vars]
+ansible_user=vagrant 
+ansible_sss_pass=vagrant
+ansible_python_interpreter=/usr/bin/python3
