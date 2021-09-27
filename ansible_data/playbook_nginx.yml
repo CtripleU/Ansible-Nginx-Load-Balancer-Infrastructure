@@ -11,12 +11,12 @@
       become: yes
     - name: copy the nginx config file and restart nginx
       copy:
-        src: ./static_site.cfg
-        dest: /etc/nginx/sites-available/static_site.cfg
+        src: ./nginx.cfg
+        dest: /etc/nginx/sites-available/nginx.cfg
       become: yes
     - name: create symlink
       file:
-        src: /etc/nginx/sites-available/static_site.cfg
+        src: /etc/nginx/sites-available/nginx.cfg
         dest: /etc/nginx/sites-enabled/default
         state: link
       become: yes
