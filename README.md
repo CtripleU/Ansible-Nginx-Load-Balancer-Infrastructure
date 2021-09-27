@@ -14,10 +14,6 @@ You do not need Ansible installed on the vagrant host, as it wil be installed on
 ### Why Ansible?
 There are three VMs, so installing, configuring, and maintaining each of them manually will be difficult and not efficient as it would take a lot of time and repeated work. Therefore, a way to automate processes is required. I chose Ansible over other tools such as Chef and Puppet because of its simplicity. It is easy to write, apply, and manage.
 
-Roles initialized with Ansible Galaxy: 
-- common : This role contains common configurations for all the servers.
-- apps: This role contains common configurations for all the web servers.
-- loadbalancer: This role contains configurations for the Nginx load balancer.
 
 To duplicate the solution on your machine:
 -----
