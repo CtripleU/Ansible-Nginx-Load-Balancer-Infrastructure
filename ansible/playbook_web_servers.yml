@@ -27,7 +27,7 @@
 
         @app.route('/', methods=['GET'])
         def index():
-            req = requests.get('https://animechan.vercel.app/api/random')
+            # req = requests.get('https://animechan.vercel.app/api/random')
             
             return "Hello from IP" 
 
