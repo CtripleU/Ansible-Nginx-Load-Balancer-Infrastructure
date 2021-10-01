@@ -7,8 +7,7 @@ Setup Requirements
 The solution was built with the following versions of software installed on vagrant host. 
 - Virtualbox 6.1.26
 - Vagrant 2.2.18 
-
-You do not need Ansible installed on the vagrant host, as it wil be installed on the control machine. 
+- Ansible 2.9.6
 
 
 ### Why Ansible?
@@ -19,12 +18,10 @@ To duplicate the solution on your machine:
 -----
   * Clone this repository
   * Run `vagrant up --provision`
-  * SSH into the control server where ansible is installed `vagrant ssh control`
-  * Cd into the synced folder `cd ansible_data`
-  * Deploy the load balancer by runnin `ansible-playbook site.yml`
-
-
-*Note*: The VMs were provisioned to ensure that all users in the admin group can sudo without a password.
+  
+### To Test if the load balancer is working:
+Automated test - `python3 test.py --url http://localhost:8080 --requests 10`
+Manual test - `curl http://192.168.33.11`
 
 
 Possible Improvements
