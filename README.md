@@ -20,8 +20,8 @@ To duplicate the solution on your machine:
   * Run `vagrant up --provision`
   
 ### To Test if the load balancer is working:
-Automated test - `python3 test.py --url http://localhost:8080 --requests 10`
-Manual test - `curl http://192.168.33.11`
+- Automated test - `python3 test.py --url http://localhost:8080 --requests 10`
+- Manual test - `curl http://192.168.33.11`
 
 
 Possible Improvements
